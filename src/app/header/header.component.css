@@ -1,0 +1,32 @@
+mat-toolbar {
+  background-color: transparent;
+}
+
+.header-body {
+  height: 4vh;
+  width: 100vw;
+}
+
+.header-name {
+  display: flex;
+  flex-direction: row;
+  margin-top: 4vh;
+  gap: 10px;
+  align-items: baseline;
+  margin-left: 4vw;
+}
+
+.company-name {
+  display: flex;
+  font-family: "Arial Black";
+  font-size: 32px;
+  color: #153565;
+
+}
+
+.description {
+  display: flex;
+  font-family: Arial;
+  font-size: 20px;
+  color: #7c8cac;
+}

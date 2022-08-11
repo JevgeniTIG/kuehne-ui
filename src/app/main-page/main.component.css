@@ -1,0 +1,22 @@
+.main-page {
+
+}
+.grid-container {
+  margin-top: 4vh;
+  margin-left: 4vh;
+  display: grid;
+  grid-template-columns: 25% 25%;
+}
+
+.grid-item-1 {
+  color: #153565;
+}
+
+.line-divider {
+  height: 1px;
+  width: 50%;
+  background-color: #7c8cac;
+  opacity: 0.2;
+}
+
+

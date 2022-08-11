@@ -1,0 +1,27 @@
+<mat-list>
+  <ng-container class="main-page" *ngFor="let person of people | slice: lowValue : highValue">
+    <div class="grid-container">
+      <div class="grid-item-1">
+        {{person.name}}
+      </div>
+      <div class="grid-item-2">
+        <img src="{{person.urlToPhoto}}"/>
+      </div>
+    </div>
+    <div class="line-divider"></div>
+  </ng-container>
+</mat-list>
+
+
+<mat-paginator (page)="getPaginatorData($event)"
+               pageSize="25"
+               [pageSizeOptions]="[20, 50, 100]"
+               class="sticky left-0"
+               [length]="people.length"
+               aria-label="Select page"
+></mat-paginator>
+
+
+
+
+
