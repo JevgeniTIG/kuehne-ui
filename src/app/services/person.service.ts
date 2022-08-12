@@ -13,8 +13,11 @@ export class PersonService {
   }
 
   getAllPeople(): Observable<any> {
-
     return this.http.get(PERSON_API);
+  }
+
+  getAllPeopleByName(partOfName: string): Observable<any> {
+    return this.http.get(PERSON_API + '/' + partOfName);
   }
 
 }

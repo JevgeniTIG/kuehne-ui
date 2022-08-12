@@ -1,3 +1,17 @@
+<div class="search-form-and-button-wrapper">
+  <div class="search-form">
+    <form [formGroup]="searchForm">
+      <mat-form-field appearance="fill">
+        <mat-label>Search by name</mat-label>
+        <input class="input-field" matInput formControlName="inputParam" maxlength="30" (keyup)="search()">
+      </mat-form-field>
+    </form>
+  </div>
+  <div class="reset-button">
+    <button (click)="resetSearch()">Reset search</button>
+  </div>
+</div>
+
 <mat-list>
   <ng-container class="main-page" *ngFor="let person of people | slice: lowValue : highValue">
     <div class="grid-container">
@@ -5,7 +19,7 @@
         {{person.name}}
       </div>
       <div class="grid-item-2">
-        <img src="{{person.urlToPhoto}}"/>
+        <img src="{{person.urlToPhoto}}" alt="urlToPhoto"/>
       </div>
     </div>
     <div class="line-divider"></div>

@@ -1,9 +1,25 @@
-.main-page {
+.search-form-and-button-wrapper {
+  display: grid;
+  grid-template-columns: 25% 25%;
+  align-items: center;
+}
 
+.search-form {
+  display: grid;
+  margin-top: 6vh;
+  margin-left: 4vw;
+  padding-right: 1vw;
+}
+
+.reset-button {
+  margin-top: 20px;
+  display: grid;
+  height: 46px;
+  width: 40%;
 }
 .grid-container {
   margin-top: 4vh;
-  margin-left: 4vh;
+  margin-left: 4vw;
   display: grid;
   grid-template-columns: 25% 25%;
 }
@@ -13,8 +29,9 @@
 }
 
 .line-divider {
+  margin-left: 4vw;
   height: 1px;
-  width: 50%;
+  width: 36%;
   background-color: #7c8cac;
   opacity: 0.2;
 }

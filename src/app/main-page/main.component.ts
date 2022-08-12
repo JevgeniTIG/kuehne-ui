@@ -1,8 +1,8 @@
 import {Component, OnInit} from "@angular/core";
 import {Person} from "../models/Person";
 import {PersonService} from "../services/person.service";
-import {MatTableDataSource} from "@angular/material/table";
 import {PageEvent} from "@angular/material/paginator";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-main',
@@ -16,16 +16,33 @@ export class MainComponent implements OnInit {
   lowValue: number = 0;
   highValue: number = 20;
 
+  // @ts-ignore
+  public searchForm: FormGroup;
 
-  constructor(private personService: PersonService) {
+
+  constructor(private personService: PersonService,
+              private formBuilder: FormBuilder) {
 
   }
 
 
   ngOnInit(): void {
-    this.personService.getAllPeople().subscribe(data=> {
+    this.searchForm = this.createSearchForm();
+    this.getAllPeople();
+  }
+
+  getAllPeople() {
+    this.people = [];
+    this.personService.getAllPeople().subscribe(data => {
       this.people = data;
     })
+  }
+
+  createSearchForm(): FormGroup {
+    const patternForInput = '^[0-9a-zA-Z]+$';
+    return this.formBuilder.group({
+      inputParam: ['', Validators.compose([Validators.required, Validators.pattern(patternForInput)])],
+    });
   }
 
   public getPaginatorData(event: PageEvent): PageEvent {
@@ -34,6 +51,25 @@ export class MainComponent implements OnInit {
     return event;
   }
 
+  getAllByName(filterParam: string): void {
+    this.personService.getAllPeopleByName(filterParam).subscribe(data => {
+      if (data.size > 0) {
+        this.people = [];
+      }
+      this.people = data;
+    })
+  }
+
+  search() {
+    if (this.searchForm.valid) {
+      this.getAllByName(this.searchForm.value.inputParam)
+    }
+  }
+
+  resetSearch() {
+    this.searchForm.reset()
+    this.getAllPeople()
+  }
 
 
 }
